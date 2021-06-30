@@ -7,7 +7,7 @@
       "pylib-remote": {
         "type": "infrastructure"
       },
-      "contract-tests": {
+      "api-service": {
         "type": "infrastructure"
       },
       "cluster": {

@@ -1,20 +1,20 @@
 import os
+import shutil
 import tempfile
 import unittest
 
-from service_buddy.util import log_handler
+from service_buddy_too.util import log_handler
 
 DIRNAME = os.path.dirname(os.path.abspath(__file__))
 
 
 class ParentTestCase(unittest.TestCase):
-    def tearDown(self):
+    @classmethod
+    def tearDownClass(cls) -> None:
         try:
-            for _file in os.listdir(self.temp_dir):
-                os.remove(_file)
-            os.removedirs(self.temp_dir)
+            shutil.rmtree(cls.temp_dir)
         except Exception as e:
-            print 'Error cleaning up ' + e.message
+            print('Error cleaning up ' +str(e))
 
     @classmethod
     def setUpClass(cls):

@@ -1,0 +1,14 @@
+{
+  "provider":"cookiecutter",
+  "code-template-definitions":{
+    "api-service": {
+      "type": "github",
+      "location": "https://github.com/rspitler/code-templates",
+      "directory": "python-container-api",
+      "service-defaults": {
+        "USE_FARGATE": "true",
+        "TASK_CPU": 256
+      }
+    }
+  }
+}

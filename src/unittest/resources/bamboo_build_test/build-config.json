@@ -1,0 +1,16 @@
+{
+  "provider": "bamboo",
+  "bamboo-url": "localhost:8000",
+  "build-templates": {
+    "test": {
+      "type": "example"
+    }
+  },
+  "build-configuration": {
+    "example": {
+      "type": "github",
+      "location": "https://github.com/rspitler/bitbucket-build-templates/",
+      "directory": "container"
+    }
+  }
+}

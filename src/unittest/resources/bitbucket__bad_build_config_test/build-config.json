@@ -1,0 +1,13 @@
+{
+  "provider": "bitbucket",
+  "build-templates": {
+    "test": {
+      "type": "example"
+    }
+  },
+  "build-configuration": {
+    "example": {
+      "location": "https://github.com/rspitler/bitbucket-build-templates/blob/main/pybuilder-infrabuddy-4-stage-build"
+    }
+  }
+}

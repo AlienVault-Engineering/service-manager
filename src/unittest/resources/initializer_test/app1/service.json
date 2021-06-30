@@ -1,6 +1,6 @@
 {
   "validate":{
-    "service-type":"cluster",
+    "service-type":"api-service",
     "description":"Test cluster"
   }
 }

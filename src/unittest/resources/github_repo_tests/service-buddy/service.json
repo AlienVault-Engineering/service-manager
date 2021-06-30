@@ -1,0 +1,6 @@
+{
+  "tests":{
+    "service-type": "pylib-local",
+    "description": "Local python library"
+  }
+}

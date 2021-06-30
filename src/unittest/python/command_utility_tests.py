@@ -1,11 +1,10 @@
-from service_buddy.util import command_util
+from service_buddy_too.util import command_util
 from testcase_parent import ParentTestCase
 
 
 
 class CommandUtilityTestCase(ParentTestCase):
-    def tearDown(self):
-        pass
+
 
     @classmethod
     def setUpClass(cls):

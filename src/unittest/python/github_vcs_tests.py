@@ -1,6 +1,9 @@
-from service_buddy.service import loader
-from service_buddy.vcs.Bitbucket import BitbucketVCSProvider
-from service_buddy.vcs.github_vcs import GitHubVCSProvider
+import os
+
+import testcase_parent
+from service_buddy_too.service import loader
+from service_buddy_too.util import command_util
+from service_buddy_too.vcs.github_vcs import GitHubVCSProvider
 from testcase_parent import ParentTestCase
 
 
@@ -26,14 +29,14 @@ class RepoReturn(object):
 
 
 class GitHubVCSInitTest(ParentTestCase):
-    def tearDown(self):
-        pass
+
 
     @classmethod
     def setUpClass(cls):
         super(GitHubVCSInitTest, cls).setUpClass()
         cls.vcs = GitHubVCSProvider()
-        cls.vcs.init(None, None, "test", False)
+        cls.github_test_dir = os.path.join(testcase_parent.DIRNAME, '../resources/github_repo_tests')
+        cls.vcs.init(None, None, "rspitler")
 
     def validate_exists(self,service_definition):
         repo = self.vcs.find_repo(service_definition)
@@ -44,15 +47,14 @@ class GitHubVCSInitTest(ParentTestCase):
         self.assertIsNotNone(repo,"Failed to create repo")
 
     def test_repo_exists(self):
-        application_map = loader.load_service_definitions(self.service_directory)
-        self.vcs.client = TestGitHubClient(application_map)
-        loader.walk_service_map(application_map, application_callback=None, service_callback=self.validate_exists)
+        command_util.dry_run_global = False
         self.vcs.client = None
-        self.vcs.dry_run = True
+        application_map = loader.load_service_definitions(self.github_test_dir,code_directory=self.temp_dir)
         loader.walk_service_map(application_map, application_callback=None, service_callback=self.validate_exists)
 
     def test_repo_create(self):
-        application_map = loader.load_service_definitions(self.service_directory)
+        application_map = loader.load_service_definitions(self.service_directory,code_directory=self.temp_dir)
         self.vcs.client = TestGitHubClient(application_map)
+        command_util.dry_run_global = False
         loader.walk_service_map(application_map, application_callback=None, service_callback=self.validate_create)
 

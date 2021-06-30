@@ -1,6 +1,6 @@
 PyGithub
 cookiecutter
-pybitbucket
 click
 infra_buddy
 requests
+atlassian-python-api

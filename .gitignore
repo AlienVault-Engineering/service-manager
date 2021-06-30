@@ -97,3 +97,10 @@ ENV/
 *.pyc
 
 .idea
+
+/.pybuilder/
+/build/
+/dist/
+/scripts/
+/service_buddy_too/
+/service_buddy_too.egg-info/
